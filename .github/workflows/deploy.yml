@@ -14,12 +14,12 @@ jobs:
   deploy:
     environment:
       name: github-pages
-      url: ${{ steps.deploy-pages.outputs.page_url }}
+      url: ${{ steps.deploy.outputs.page_url }}
 
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout source
+      - name: Checkout
         uses: actions/checkout@v4
 
       - name: Upload artifact
@@ -27,6 +27,6 @@ jobs:
         with:
           path: .
 
-      - name: Deploy to GitHub Pages
-        id: deploy-pages
+      - name: Deploy
+        id: deploy
         uses: actions/deploy-pages@v4
